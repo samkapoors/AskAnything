@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model askAnything.Models.UserModel
+
+@if (TempData["testmsg"] != null)
+{
+    <script type="text/javascript">
+       alert("@TempData["testmsg"]");
+    </script>
+}
+@if (Session["Name"] != null)
+{
+    Response.Redirect("Home/Dashboard");
+}
+else
+{
+
+
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 p0 landingPopup">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 p0 text-center">
+        <h1 class="logo">Ask Anything</h1>
+        <div class="gray fs22 mB20">A place for sharing your knowledge</div>
+    </div>
+
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 p0">
+
+        @using (Html.BeginForm("Dashboard", "Home", FormMethod.Post))
+        {
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 landPopBrdr">
+                <h2 class="fs22">Login Here</h2>
+
+                <input type="text" id="Email" name="Email_id" placeholder="E-mail.." />
+
+                @{ if (ViewBag.Status == "Login_error")
+                    {
+                        @Html.ValidationMessageFor(m => m.Email_id)
+                    }
+                }
+                <input type="password" name="Password" placeholder="Password.." />
+
+                @{ if (ViewBag.Status == "Login_error")
+                    {
+                        @Html.ValidationMessageFor(m => m.Password)
+                    }
+                }
+
+                <div>Forgot Password?</div>
+                <div>
+                    <button class="pull-right">Login</button>
+                </div>
+            </div>
+
+        }
+
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <h2 class="fs22">Register Here</h2>
+
+                 <input type="text" name="First_Name" placeholder="Name.." />
+
+                @{ if (ViewBag.Status == "Register_error")
+                    {
+                        @Html.ValidationMessageFor(m => m.First_Name)
+                    }
+                }
+
+                <input type="text" name="Email" placeholder="E-mail.." />
+
+                @{ if (ViewBag.Status == "Register_error")
+                    {
+                        @Html.ValidationMessageFor(m => m.Email_id)
+                    }
+                }
+
+                <input type="password" name="Password" placeholder="Password.." />
+
+                @{ if (ViewBag.Status == "Register_error")
+                    {
+                        @Html.ValidationMessageFor(m => m.Password)
+                    }
+                }
+
+                <input type="password" name="Confirm_Password" placeholder="Confirm Password.." />
+
+                @{ if (ViewBag.Status == "Register_error")
+                    {
+                        @Html.ValidationMessageFor(m => m.Confirm_Password)
+                    }
+                }
+
+                <div>
+                    <button class="pull-right">Register</button>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 clr text-center">
+        @Html.ActionLink("Skip, Do not want to register", "Dashboard", "Home")
+    </div>
+  </div>
+}

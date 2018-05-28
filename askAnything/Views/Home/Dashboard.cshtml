@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["testmsg"] != null)
+{
+    <script type="text/javascript">
+           alert("@TempData["testmsg"]");
+    </script>
+}
+
+
+<section class="col-xs-12 col-sm-12 col-md-9 col-lg-9 mT20">
+
+    @using (Html.BeginForm("AddQuestion", "Question", FormMethod.Post))
+    {
+        <section class="userQuestion whiteBox">
+            <h3 class="gray">What is in your mind? Tell me...</h3>
+            <div class="col-lg-12 p0">
+               
+                <input type="text" name="Info_file" placeholder="Type Here.." class="col-lg-10 input-lg quesInput mT15" width="1000" />
+
+                <button class="btn btn-primary col-lg-2 mL20 mT20">Ask Question</button>
+            </div>
+        </section>
+    }
+    
+    <section class="allQuestions whiteBox">
+        <article class="quesAnsBox">
+            <h3 class="black">
+                What are the drawbacks of moving to Canada?
+                <span class="grayD fs12">...ask by <strong class="orange">Sumit</strong> on <span class="date">dd/mm/yy</span></span>
+            </h3>
+
+            <h4 class="black brdBottom pB10 ">
+               Answers 100
+            </h4>
+
+            <h5 class="gray bold mT15">
+                Neil Jamieson-Williams, Community College Professor (2002-present)
+                Answered Nov 20, 2017
+            </h5>
+            <p class="grayD">I am listing some of the drawbacks as well as advantages of moving to Canada; so that it gives a fair idea and helps people make up their mind.  I am listing some of the drawbacks as well as advantages of moving to Canada; so that it gives a fair idea and helps people make up their mind.  I am listing some of the drawbacks as well as advantages of moving to....<a href="" class="orange">read more</a></p>
+        </article>
+    </section>
+
+    
+</section>
+
+<aside class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mT20 whiteBox">
+    <h4 class="orange">User Profile Links</h4>
+</aside>
+
+
+
+
+

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        body {
+            background: #eee !important
+        }
+    </style>
+</head>
+<body>
+    <div class="container body-content">
+        <header>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        @*@Html.ActionLink("Ask Anything", "Index", "Home", new { area = "" }, new { @class = "navbar-brand logo" })*@
+
+                        <h1>
+                            <i class="logoIcon"></i>
+                            <strong class="fs24 orange pull-left">Ask Anything</strong>
+                        </h1>
+
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+
+                        <div class="mT10 mL30 pull-left">
+                            <input type="text" placeholder="Search.." class="form-control searchTxt" />
+                            <button class="btn btn-primary">Search Question</button>
+                        </div>
+
+                        <div class="mT20 pull-right gray fs12">
+                            Welcome!!
+                            @if (Session["Name"] != null)
+                            {
+                                <strong class="userName orange">@Session["Name"].ToString()!!</strong>
+                            }
+                            else
+                            {
+                                <strong class="userName orange">Guest</strong>
+
+                            }
+                            | @Html.ActionLink("Logout", "Logout", "Home", new { @class = "gray" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+        <footer class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mT20 text-center">
+            <p>&copy; @DateTime.Now.Year - Ask Anything </p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
